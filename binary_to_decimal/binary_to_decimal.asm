@@ -3,7 +3,7 @@
 
 extern printf
 section .data
-	thebinarynumber db "1011110111",0
+	thebinarynumber db "1000101011101011101000",0 ;<------change the binary number here
 	exponent equ $-thebinarynumber-2  
 	thedecimalnumber dq 0
 	msg db "Binary: %s",9,"Decimal: %d",10,0 ;9 is ascii of \t 
@@ -19,7 +19,8 @@ main:
 ;by the common algorithm i.e. the algorithm that we use 
 ;when we convert binary numbers to decimal numbers by using pencil and paper.
 	mov rcx, exponent
-	xor rax,rax
+	add rcx, 1
+
 	xor rbx,rbx
 	mov rbx,1
 
@@ -31,6 +32,8 @@ main:
 	mov rbx,1
 
 bloop:
+	xor rax,rax
+
 	mov byte al,[rdx]
 	sub rax,48
 	imul rax,rbx
