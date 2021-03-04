@@ -14,6 +14,7 @@ section .text
 	global main
 main:
 	xor rcx,rcx
+
 ;convert the binary number to the decimal number
 ;by the common algorithm
 	mov rcx, exponent
@@ -31,7 +32,8 @@ bloop:
 	mov rbx,1
 	mov rax,[rdx]
 	sub rax,48
-	imul qword rbx
+	imul rax,rbx
+
 	add r8,rax
 	dec rdx
 	add rbx,rbx
